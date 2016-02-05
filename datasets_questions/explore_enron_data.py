@@ -16,7 +16,27 @@
 """
 
 import pickle
-
+import math
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
-
-
+POI=0
+for key in enron_data:
+  try:
+    f=float(enron_data[key]["email_address"])
+  except ValueError:
+    continue
+  else:
+    if(~math.isnan(f)):
+      POI=POI+1
+print (POI)
+total=0
+for key in enron_data:
+  total=total+1
+print total
+print total-POI
+# print (enron_data["LAY KENNETH L"]["total_payments"])
+# print enron_data["FASTOW ANDREW S"]["total_payments"]
+# print enron_data["SKILLING JEFFREY K"]["total_payments"]
+# for key in enron_data:
+#   if key=="PRENTICE JAMES":
+#     for subkey in enron_data[key]:
+#       print (subkey)+" "
